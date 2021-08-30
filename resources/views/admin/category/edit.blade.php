@@ -3,6 +3,6 @@
     <div class="form-group cate">
         <label>Nama Kategory</label>
         <input type="text" class="form-control" name="name" id="name"
-            placeholder="Masukan Nama Kategory" value="{{$category->name}}">
+            placeholder="Masukan Nama Kategory" value="{{$category->name}}" autocomplete="off">
     </div>
 </div>

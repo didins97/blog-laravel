@@ -73,7 +73,7 @@
                         <div class="form-group">
                             <label>Nama Tag</label>
                             <input type="text" class="form-control" name="name" id="name"
-                                placeholder="Masukan Nama Tag">
+                                placeholder="Masukan Nama Tag" autocomplete="off">
                             <span @error('name') class="text-danger" @enderror>
                                 @error('name'){{$message}}@enderror
                             </span>

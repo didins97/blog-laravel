@@ -30,13 +30,13 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('category.index') }}">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-fw fa-list-alt"></i>
             <span>Kategory</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ route('tag.index') }}">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-fw fa-tags"></i>
             <span>Tags</span>
         </a>
     </li>
@@ -56,20 +56,19 @@
     </li> --}}
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item @if (Request::segment(1) == 'post') active  @endif">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
+            <span>Post</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+        <div id="collapseUtilities" class="collapse @if (Request::segment(1) == 'post') show  @endif" aria-labelledby="headingUtilities"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
+                <h6 class="collapse-header">Management</h6>
+                <a class="collapse-item @if (Request::segment(1) == 'post' and Request::segment(2) == '' ) active  @endif" href="{{ route('post.index') }}">List Post</a>
+                <a class="collapse-item @if (Request::segment(1) == 'post' and Request::segment(2) == 'create' ) active  @endif" href="{{ route('post.create') }}">Add Post</a>
+                <a class="collapse-item @if (Request::segment(1) == 'post' and Request::segment(2) == 'show_delete' ) active  @endif" href="{{ route('post.show_delete') }}">Show Delete Post</a>
             </div>
         </div>
     </li>
