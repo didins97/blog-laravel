@@ -1,12 +1,12 @@
-@include('layouts.header')
+@include('template_backend.header')
 
     <div id="wrapper">
-        @include('layouts.sidebar')
+        @include('template_backend.sidebar')
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
             <div id="content">
 
-                @include('layouts.navbar')
+                @include('template_backend.navbar')
 
                 <div class="container-fluid">
                     <section>@yield('content')</section>
@@ -16,11 +16,11 @@
             </div>
             <!-- End of Main Content -->
 
-            @include('layouts.footer')
+            @include('template_backend.footer')
 
         </div>
     </div>
     
-@include('layouts.js')
+@include('template_backend.js')
 
 

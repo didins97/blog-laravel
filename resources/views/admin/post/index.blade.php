@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('template_backend.master')
 
 @section('content')
 <div class="card shadow mb-4">
