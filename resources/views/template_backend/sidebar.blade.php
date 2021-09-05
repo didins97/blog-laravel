@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Blog Admin</div>
     </a>
 
     <!-- Divider -->
@@ -72,6 +72,23 @@
             </div>
         </div>
     </li>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item @if (Request::segment(1) == 'user') active  @endif">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Users</span>
+        </a>
+        <div id="collapseTwo" class="collapse @if (Request::segment(1) == 'user') show  @endif" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Management</h6>
+                <a class="collapse-item @if (Request::segment(1) == 'user' and Request::segment(2) == '' ) active  @endif" href="{{ route('user.index') }}">List Users</a>
+            </div>
+        </div>
+    </li>
+    
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

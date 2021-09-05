@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Auth::routes();
+Auth::routes(); // call route auth(login, register and dll)
 Route::get('/', function () { return view('welcome'); });
 
 // blog
@@ -26,8 +26,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/tag', 'TagController');
     Route::get('/post/show_delete', 'PostController@show_delete')->name('post.show_delete');
     Route::get('/post/restore/{id}', 'PostController@restore')->name('post.restore');
+    Route::get('/post/detail/{id}', 'PostController@detail')->name('post.detail');
     Route::delete('/post/kill/{id}', 'PostController@kill')->name('post.kill');
     Route::resource('/post', 'PostController');
+    Route::resource('/user', 'UserController');
 });
 
 

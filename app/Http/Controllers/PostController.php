@@ -6,6 +6,7 @@ use App\Posts;
 use App\Category;
 use App\Tags;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -41,12 +42,7 @@ class PostController extends Controller
    */
   public function store(Request $request)
   {
-    $this->validate($request, [
-      'judul' => 'required',
-      'category_id' => 'required',
-      'content' => 'required',
-      'gambar' => 'required'
-    ]);
+    $this->_validation($request);
 
     $gambar = $request->gambar;
     $new_gambar = date('siHdmY') . $gambar->getClientOriginalName();
@@ -57,6 +53,7 @@ class PostController extends Controller
       'content' => $request->content,
       'gambar' => 'uploads/posts/' . $new_gambar,
       'slug' => Str::slug($request->judul),
+      'user_id' => Auth::id()
     ]);
 
     $post->tags()->attach($request->tags);
@@ -65,6 +62,16 @@ class PostController extends Controller
 
     return redirect()->back()->with('message', 'Postingan Anda Berhasil Disimpan');
   }
+
+  public function _validation(Request $request)
+    {
+      $request->validate([
+        'judul' => 'required',
+        'category_id' => 'required',
+        'content' => 'required',
+        'gambar' => 'required'
+      ]);
+    }
 
   /**
    * Display the specified resource.
@@ -100,11 +107,7 @@ class PostController extends Controller
    */
   public function update(Request $request, $id)
   {
-    $this->validate($request, [
-      'judul' => 'required',
-      'category_id' => 'required',
-      'content' => 'required'
-    ]);
+    $this->_validation($request);
 
     $post = Posts::find($id);
 
@@ -118,6 +121,7 @@ class PostController extends Controller
         'content' => $request->content,
         'gambar' => 'uploads/posts/' . $new_gambar,
         'slug' => Str::slug($request->judul),
+        'user_id' => Auth::id()
       ];
     } else {
       $post_data = [
@@ -125,6 +129,7 @@ class PostController extends Controller
         'category_id' => $request->category_id,
         'content' => $request->content,
         'slug' => Str::slug($request->judul),
+        'user_id' => Auth::id()
       ];
     }
 
@@ -167,4 +172,11 @@ class PostController extends Controller
 
     return redirect()->back()->with('message', 'Postingan Anda Berhasil Dihapus Secara Permanent');
   }
+
+  public function detail($id)
+  {
+    $posts = Posts::find($id);
+    return view('admin.post.detail', compact('posts'));
+  }
+
 }
