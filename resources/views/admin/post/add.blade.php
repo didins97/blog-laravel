@@ -13,7 +13,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="judul">Judul</label>
-            <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukan Judul Post" autocomplete="off">
+            <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukan Judul Post" value="{{ old('judul') }}" autocomplete="off">
         </div>
         <div class="form-group col-md-6">
             <label for="category">Kategori</label>
@@ -39,7 +39,7 @@
     </div>
     <div class="form-group mb-4">
         <label for="content">Content</label>
-        <textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
+        <textarea class="form-control" name="content" id="editor1" cols="30" rows="10"></textarea>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block">Simpan Post</button>
@@ -47,11 +47,19 @@
 </form>
 @endsection
 
+
 @push('after-script')
 <script>
     $(document).ready(function () {
         $('.js-example-basic-multiple').select2();
     });
 
+    CKEDITOR.replace( 'editor1' );
+
 </script>
+@endpush
+
+@push('page-script')
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 @endpush

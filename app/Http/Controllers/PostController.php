@@ -42,7 +42,12 @@ class PostController extends Controller
    */
   public function store(Request $request)
   {
-    $this->_validation($request);
+    $this->validate($request,[
+      'judul' => 'required',
+      'category_id' => 'required',
+      'content' => 'required',
+      'gambar' => 'required'
+    ]);
 
     $gambar = $request->gambar;
     $new_gambar = date('siHdmY') . $gambar->getClientOriginalName();
@@ -63,15 +68,6 @@ class PostController extends Controller
     return redirect()->back()->with('message', 'Postingan Anda Berhasil Disimpan');
   }
 
-  public function _validation(Request $request)
-    {
-      $request->validate([
-        'judul' => 'required',
-        'category_id' => 'required',
-        'content' => 'required',
-        'gambar' => 'required'
-      ]);
-    }
 
   /**
    * Display the specified resource.
@@ -107,7 +103,11 @@ class PostController extends Controller
    */
   public function update(Request $request, $id)
   {
-    $this->_validation($request);
+    $this->validate($request,[
+      'judul' => 'required',
+      'category_id' => 'required',
+      'content' => 'required',
+    ]);
 
     $post = Posts::find($id);
 

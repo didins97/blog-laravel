@@ -34,7 +34,7 @@
     </div>
     <div class="row">
             <dt class="col-sm-3">Description lists</dt>
-            <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
+            <dd class="col-sm-9">{{$posts->content}}</dd>
     </div>
 </div>
 {{-- <div class="row">

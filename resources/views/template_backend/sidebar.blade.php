@@ -59,7 +59,7 @@
     <li class="nav-item @if (Request::segment(1) == 'post') active  @endif">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
+            <i class="fas fa-fw fa-clipboard"></i>
             <span>Post</span>
         </a>
         <div id="collapseUtilities" class="collapse @if (Request::segment(1) == 'post') show  @endif" aria-labelledby="headingUtilities"
